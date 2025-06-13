@@ -7,7 +7,94 @@
     <title>Responsive navbar + language switcher</title>
 
     <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>    <!-- Style pour le carousel -->    <style>
+        .carousel {
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel-inner {
+            display: flex;
+        }
+        .carousel-item {
+            flex: 0 0 100%;
+            opacity: 0.7;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .carousel-item img {
+            transform: scale(0.95);
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-item.active {
+            opacity: 1;
+        }
+        .carousel-item.active img {
+            transform: scale(1);
+        }
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease, background-color 0.3s ease;
+        }
+        .carousel:hover .carousel-control {
+            opacity: 0.8;
+        }
+        .carousel-control:hover {
+            background: rgba(0, 0, 0, 0.7);
+            opacity: 1;
+        }
+        .carousel-prev {
+            left: 1rem;
+        }
+        .carousel-next {
+            right: 1rem;
+        }
+
+        /* Styles spécifiques pour chaque carousel */
+        .carousel:nth-child(1) .carousel-inner {
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .carousel:nth-child(2) .carousel-inner {
+            transition: transform 0.7s cubic-bezier(0.7, 0, 0.3, 1);
+        }
+        .carousel:nth-child(3) .carousel-inner {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.6, 1);
+        }
+
+        /* Indicateurs de progression */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+        .carousel-indicator {
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+        .carousel-indicator.active {
+            background: white;
+            transform: scale(1.2);
+        }
+    </style>
 
     <!-- Petite customisation (couleur primaire = bleu personnalisé) -->
     <script>
@@ -131,7 +218,7 @@
         </div>
 
         <!-- Contenu centré -->
-        <div class="relative z-10 w-full max-w-3xl px-4 text-center">
+        <div class="relative z-10 w-full max-w-4xl px-4 text-center">
             <h1 class="text-3xl md:text-4xl lg:text-6xl font-extrabold text-gray-800 mb-4">
                 <span data-i18n="hero.title">Votre projet mérite</span><br />
                 <span class="text-primary" data-i18n="hero.subtitle">une modélisation à la hauteur</span>
@@ -193,13 +280,13 @@
                             </div>
                             <div class="w-5/12 pl-8 opacity-0 reveal-left">
                                 <h3 class="text-xl font-bold text-gray-800" data-i18n="timeline.item2.title">Plans d'architecture pont et rail</h3>
-                                <p class="text-gray-600 mt-2" data-i18n="timeline.item2.desc">Plan elevation, plan 3D...</p>
+                                <p class="text-gray-600 mt-2" data-i18n="timeline.item2.desc">Profil en long, profil en travers…, plan 3d …</p>
                             </div>
                         </div>
                         <!-- Item 3 -->
                         <div class="flex items-center justify-between">
                             <div class="w-5/12 pr-8 text-right opacity-0 reveal-right">
-                                <h3 class="text-xl font-bold text-gray-800" data-i18n="timeline.item3.title">Plans de copropriété</h3>
+                                <h3 class="text-xl font-bold text-gray-800" data-i18n="timeline.item3.title">Plans de copropriété et d’hébergement</h3>
                                 <p class="text-gray-600 mt-2" data-i18n="timeline.item3.desc">Plans détaillés d'hébergement</p>
                             </div>
                             <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-primary flex items-center justify-center">
@@ -291,31 +378,85 @@
                 <p class="text-gray-600 max-w-2xl mx-auto">Découvrez notre gamme complète de services de modélisation et de traitement de données géographiques.</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Card 1 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">                <!-- Card 1 -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                    <img src="assets/img/header-1.jpeg" alt="Modélisation 3D" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Modélisation 3D</h3>
-                        <p class="text-gray-600">Création de modèles 3D précis à partir de données topographiques pour vos projets d'architecture et d'urbanisme.</p>
+                    <div class="carousel h-48" data-interval="4000">
+                        <div class="carousel-inner h-full">
+                            <div class="carousel-item active">
+                                <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- MAQUETTES NUMÉRIQUES & MODÉLISATION 3D/1.PNG" alt="Modélisation 3D 1" class="w-full h-48 object-cover">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- MAQUETTES NUMÉRIQUES & MODÉLISATION 3D/2.PNG" alt="Modélisation 3D 2" class="w-full h-48 object-cover">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- MAQUETTES NUMÉRIQUES & MODÉLISATION 3D/3.PNG" alt="Modélisation 3D 3" class="w-full h-48 object-cover">
+                            </div>
+                        </div>
+                        <button class="carousel-control carousel-prev">&lt;</button>
+                        <button class="carousel-control carousel-next">&gt;</button>
+                        <div class="carousel-indicators">
+                            <span class="carousel-indicator active"></span>
+                            <span class="carousel-indicator"></span>
+                            <span class="carousel-indicator"></span>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                    <img src="assets/img/header-3.jpeg" alt="Plans 2D" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Plans 2D</h3>
-                        <p class="text-gray-600">Élaboration de plans détaillés et de dessins techniques pour vos besoins en construction et aménagement.</p>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">MAQUETTES NUMÉRIQUES & MODÉLISATION 3D</h3>
+                        <p class="text-gray-600">Nous modélisons vos projets en 3D à partir de vos relevés, plans ou croquis, pour des usages allant de la visualisation simple au BIM avancé</p>
                     </div>
-                </div>
-
-                <!-- Card 3 -->
+                </div>                <!-- Card 2 -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                    <img src="assets/img/header-5.jpeg" alt="Analyse de données" class="w-full h-48 object-cover">
+                    <div class="carousel h-48" data-interval="5000">
+                        <div class="carousel-inner h-full">
+                            <div class="carousel-item active">
+                                <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-PLANS TOPOGRAPHIQUES 2D  3D/mnt.PNG" alt="Plan 2D 1" class="w-full h-48 object-cover">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-PLANS TOPOGRAPHIQUES 2D  3D/er.PNG" alt="Plan 2D 2" class="w-full h-48 object-cover">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-PLANS TOPOGRAPHIQUES 2D  3D/ert.PNG" alt="Plan 2D 3" class="w-full h-48 object-cover">
+                            </div>
+                        </div>
+                        <button class="carousel-control carousel-prev">&lt;</button>
+                        <button class="carousel-control carousel-next">&gt;</button>
+                        <div class="carousel-indicators">
+                            <span class="carousel-indicator active"></span>
+                            <span class="carousel-indicator"></span>
+                            <span class="carousel-indicator"></span>
+                        </div>
+                    </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Analyse de données</h3>
-                        <p class="text-gray-600">Traitement et analyse approfondie de données géographiques pour des insights précieux sur votre territoire.</p>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">PLANS TOPOGRAPHIQUES 2D / 3D</h3>
+                        <p class="text-gray-600">Vous avez un projet d’aménagement, de voirie ou de réseaux ?
+Notre équipe produit des plans topographiques 2D/3D de haute précision à partir de relevés laser 3D, LIDAR ou drone, en accord total avec vos chartes DAO, SIG ou BIM.
+</p>
+                    </div>
+                </div>                <!-- Card 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="carousel h-48" data-interval="6000">
+                        <div class="carousel-inner h-full">
+                            <div class="carousel-item active">
+                                <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-. PLANS TECHNIQUES D’ARCHITECTURE/st1.jpg" alt="Visualisation 1" class="w-full h-48 object-cover">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-. PLANS TECHNIQUES D’ARCHITECTURE/st2.jpg" alt="Visualisation 2" class="w-full h-48 object-cover">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-. PLANS TECHNIQUES D’ARCHITECTURE/st3.png" alt="Visualisation 3" class="w-full h-48 object-cover">
+                            </div>
+                        </div>
+                        <button class="carousel-control carousel-prev">&lt;</button>
+                        <button class="carousel-control carousel-next">&gt;</button>
+                        <div class="carousel-indicators">
+                            <span class="carousel-indicator active"></span>
+                            <span class="carousel-indicator"></span>
+                            <span class="carousel-indicator"></span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">PLANS TECHNIQUES D’ARCHITECTURE</h3>
+                        <p class="text-gray-600">Nous réalisons des plans d’architecture précis, détaillés et normalisés, conçus pour répondre aux besoins des architectes, promoteurs, maîtres d’ouvrage et bureaux de contrôle.</p>
                     </div>
                 </div>
             </div>
@@ -365,10 +506,141 @@
                         <img src="assets/img/blender-logo.png" alt="RealWorks" 
                              class="h-16 w-auto grayscale group-hover:grayscale-0 transition-all duration-300">
                         <span class="mt-2 text-sm text-gray-600">Blender</span>
-                    </div>
-                </div>
+                    </div>                </div>
             </div>
-        </section>
+        </section>        <!-- JavaScript pour le carousel -->
+        <script>
+            function initCarousels() {
+                const transitionEffects = [
+                    { duration: 0.5, timing: 'ease-in-out', interval: 4000 },  // Premier carousel
+                    { duration: 0.7, timing: 'ease', interval: 5000 },         // Deuxième carousel
+                    { duration: 0.3, timing: 'ease-out', interval: 6000 }      // Troisième carousel
+                ];
+
+                document.querySelectorAll('.carousel').forEach((carousel, index) => {
+                    const inner = carousel.querySelector('.carousel-inner');
+                    const items = carousel.querySelectorAll('.carousel-item');
+                    const prev = carousel.querySelector('.carousel-prev');
+                    const next = carousel.querySelector('.carousel-next');
+                    const indicators = carousel.querySelectorAll('.carousel-indicator');
+                    let currentIndex = 0;
+                    let isTransitioning = false;
+
+                    // Appliquer les effets de transition spécifiques
+                    const effect = transitionEffects[index];
+                    inner.style.transition = `transform ${effect.duration}s ${effect.timing}`;
+
+                    function updateIndicators() {
+                        indicators.forEach((indicator, idx) => {
+                            if (idx === currentIndex) {
+                                indicator.classList.add('active');
+                            } else {
+                                indicator.classList.remove('active');
+                            }
+                        });
+                    }
+
+                    function updateCarousel(direction = 1) {
+                        if (isTransitioning) return;
+                        isTransitioning = true;
+
+                        // Retirer la classe active de tous les éléments
+                        items.forEach(item => {
+                            item.classList.remove('active');
+                            item.style.opacity = '0.7';
+                            item.style.transition = `opacity ${effect.duration}s ${effect.timing}`;
+                        });
+
+                        currentIndex = (currentIndex + direction + items.length) % items.length;
+                        inner.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+                        // Mettre à jour l'élément actif et les indicateurs
+                        setTimeout(() => {
+                            items[currentIndex].classList.add('active');
+                            items[currentIndex].style.opacity = '1';
+                            updateIndicators();
+                            isTransitioning = false;
+                        }, effect.duration * 1000);
+                    }
+
+                    // Ajouter des événements de clic pour les indicateurs
+                    indicators.forEach((indicator, idx) => {
+                        indicator.addEventListener('click', () => {
+                            if (idx === currentIndex || isTransitioning) return;
+                            const direction = idx > currentIndex ? 1 : -1;
+                            const steps = Math.abs(idx - currentIndex);
+                            const updateNext = () => {
+                                if (currentIndex !== idx) {
+                                    updateCarousel(direction);
+                                }
+                            };
+                            updateNext();
+                        });
+                    });
+
+                    prev.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        updateCarousel(-1);
+                    });
+
+                    next.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        updateCarousel(1);
+                    });
+
+                    // Auto-play avec intervalle personnalisé
+                    let autoplayInterval = setInterval(() => {
+                        if (!document.hidden) {
+                            updateCarousel(1);
+                        }
+                    }, effect.interval);
+
+                    // Pause sur le survol
+                    carousel.addEventListener('mouseenter', () => {
+                        clearInterval(autoplayInterval);
+                    });
+
+                    carousel.addEventListener('mouseleave', () => {
+                        autoplayInterval = setInterval(() => {
+                            if (!document.hidden) {
+                                updateCarousel(1);
+                            }
+                        }, effect.interval);
+                    });
+
+                    // Gestion tactile pour mobile
+                    let touchStartX = 0;
+                    let touchEndX = 0;
+
+                    carousel.addEventListener('touchstart', (e) => {
+                        touchStartX = e.touches[0].clientX;
+                        clearInterval(autoplayInterval); // Pause pendant le toucher
+                    }, { passive: true });
+
+                    carousel.addEventListener('touchend', (e) => {
+                        touchEndX = e.changedTouches[0].clientX;
+                        const diff = touchStartX - touchEndX;
+
+                        if (Math.abs(diff) > 50) {
+                            updateCarousel(diff > 0 ? 1 : -1);
+                        }
+
+                        // Reprendre l'autoplay après le toucher
+                        autoplayInterval = setInterval(() => {
+                            if (!document.hidden) {
+                                updateCarousel(1);
+                            }
+                        }, effect.interval);
+                    }, { passive: true });
+
+                    // Initialiser les indicateurs
+                    updateIndicators();
+                });
+            }
+
+            // Initialiser les carousels au chargement de la page
+            document.addEventListener('DOMContentLoaded', initCarousels);
+        </script>
 
         <section id="contact">
             <div class="max-w-7xl mx-auto px-4 py-16">
@@ -410,7 +682,7 @@
                                 </div>
                                 <div>
                                     <p class="text-gray-800 font-medium">Email</p>
-                                    <a href="mailto:Topoduilddesign@gmail.com" class="text-primary hover:underline">Topoduilddesign@gmail.com</a>
+                                    <a href="mailto:Topoduilddesign@gmail.com" class="text-primary hover:underline">contact@topobuild-design.com | topobuildesign@gmail.com</a>
                                 </div>
                             </div>
 
@@ -424,7 +696,7 @@
                                 </div>
                                 <div>
                                     <p class="text-gray-800 font-medium">Adresse</p>
-                                    <p class="text-gray-600">Mahamasina Antananarivo-101 Madagascar</p>
+                                    <p class="text-gray-600">Lot III C7 – Mahamasina,101 Antananarivo – Madagascar</p>
                                 </div>
                             </div>
 
