@@ -1,8 +1,8 @@
-const translations = {
-    fr: {
+const translations = {    fr: {
         'nav.home': 'Accueil',
-        'nav.about': 'À propos',
-        'nav.services': 'Services',
+        'nav.values': 'Valeurs',
+        'nav.services': 'Nos Services',
+        'nav.software': 'Logiciels',
         'nav.contact': 'Contact',
         'hero.title': 'Votre partenaire de confiance à Madagascar dans',
         'hero.subtitle': 'la modelisation 2D/3D et le traitement de données achitecturales',
@@ -68,11 +68,11 @@ const translations = {
             'Gestion des délais',
             'Par mail ou ftp suivant taille des livrables'
         ]
-    },
-    en: {
+    },    en: {
         'nav.home': 'Home',
-        'nav.about': 'About',
-        'nav.services': 'Services',
+        'nav.values': 'Values',
+        'nav.services': 'Our Services',
+        'nav.software': 'Software',
         'nav.contact': 'Contact',
         'hero.title': 'Your project deserves',
         'hero.subtitle': 'high-quality modeling',
