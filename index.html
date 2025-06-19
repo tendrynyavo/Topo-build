@@ -6,32 +6,40 @@
     <meta name="description" content="TopoBuild Design vous accompagne dans la réalisation précise et efficace de vos projets techniques, 
     de l'étude à la production, tout en garantissant des délais optimisés et coûts maîtrisés.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive navbar + language switcher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
+    <title>Topo Build - Services de Topographie et Architecture</title>
 
     <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>    <!-- Style pour le carousel -->    <style>
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Style pour le carousel -->
+    <style>
         .carousel {
             position: relative;
             overflow: hidden;
         }
+
         .carousel-inner {
             display: flex;
         }
+
         .carousel-item {
             flex: 0 0 100%;
             opacity: 0.7;
             transition: opacity 0.5s ease-in-out;
         }
+
         .carousel-item img {
             transform: scale(0.95);
             transition: transform 0.5s ease-in-out;
         }
+
         .carousel-item.active {
             opacity: 1;
         }
+
         .carousel-item.active img {
             transform: scale(1);
         }
+
         .carousel-control {
             position: absolute;
             top: 50%;
@@ -50,16 +58,20 @@
             opacity: 0;
             transition: opacity 0.3s ease, background-color 0.3s ease;
         }
+
         .carousel:hover .carousel-control {
             opacity: 0.8;
         }
+
         .carousel-control:hover {
             background: rgba(0, 0, 0, 0.7);
             opacity: 1;
         }
+
         .carousel-prev {
             left: 1rem;
         }
+
         .carousel-next {
             right: 1rem;
         }
@@ -68,9 +80,11 @@
         .carousel:nth-child(1) .carousel-inner {
             transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         .carousel:nth-child(2) .carousel-inner {
             transition: transform 0.7s cubic-bezier(0.7, 0, 0.3, 1);
         }
+
         .carousel:nth-child(3) .carousel-inner {
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.6, 1);
         }
@@ -85,6 +99,7 @@
             gap: 0.5rem;
             z-index: 10;
         }
+
         .carousel-indicator {
             width: 0.5rem;
             height: 0.5rem;
@@ -92,6 +107,7 @@
             background: rgba(255, 255, 255, 0.5);
             transition: all 0.3s ease;
         }
+
         .carousel-indicator.active {
             background: white;
             transform: scale(1.2);
@@ -104,21 +120,23 @@
             width: 100%;
             height: 100%;
         }
-        
+
         .carousel-inner-bg {
             display: flex;
-            width: 400%; /* 100% * nombre d'images */
+            width: 400%;
+            /* 100% * nombre d'images */
             height: 100%;
             transition: transform 1s ease-in-out;
         }
-        
+
         .carousel-item-bg {
-            flex: 0 0 25%; /* 100% / nombre d'images */
+            flex: 0 0 25%;
+            /* 100% / nombre d'images */
             height: 100%;
             opacity: 0;
             transition: opacity 1s ease-in-out;
         }
-        
+
         .carousel-item-bg.active {
             opacity: 1;
         }
@@ -159,13 +177,11 @@
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-          crossorigin=""/>
-    
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
     <!-- Leaflet JavaScript -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-            crossorigin=""></script>
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="assets/js/translations.js"></script>
 </head>
 
@@ -176,14 +192,14 @@
             <div class="flex h-16 items-center justify-between">
                 <!-- Logo -->
                 <a href="#" class="text-2xl font-bold text-primary flex items-center">
-                    <img src="assets/img/logo-topobuild-resize-removebg-preview.png" alt="Prodmast Logo" class="h-[6rem] py-5 w-auto">
-                </a>
-
-                <!-- Liens (desktop) -->
+                    <img src="assets/img/logo-topobuild-resize-removebg-preview.png" alt="Prodmast Logo"
+                        class="h-[6rem] py-5 w-auto">
+                </a>                <!-- Liens (desktop) -->
                 <ul class="hidden md:flex items-center space-x-8 font-medium">
-                    <li><a href="#home" class="text-gray-600 hover:text-primary" data-i18n="nav.home">Home</a></li>
-                    <li><a href="#about" class="text-gray-600 hover:text-primary" data-i18n="nav.about">About</a></li>
-                    <li><a href="#services" class="text-gray-600 hover:text-primary" data-i18n="nav.services">Services</a></li>
+                    <li><a href="#home" class="text-gray-600 hover:text-primary" data-i18n="nav.home">Accueil</a></li>
+                    <li><a href="#services" class="text-gray-600 hover:text-primary" data-i18n="nav.values">Valeurs</a></li>
+                    <li><a href="#realisations" class="text-gray-600 hover:text-primary" data-i18n="nav.services">Nos Services</a></li>
+                    <li><a href="#logiciels" class="text-gray-600 hover:text-primary" data-i18n="nav.software">Logiciels</a></li>
                     <li><a href="#contact" class="text-gray-600 hover:text-primary" data-i18n="nav.contact">Contact</a></li>
                 </ul>
 
@@ -212,14 +228,13 @@
                     </button>
                 </div>
             </div>
-        </div>
-
-        <!-- Menu mobile -->
+        </div>        <!-- Menu mobile -->
         <div id="mobileMenu" class="md:hidden hidden bg-white border-t shadow-inner">
-            <a href="#home" class="block px-6 py-2 text-gray-600 hover:bg-gray-50">Home</a>
-            <a href="#about" class="block px-6 py-2 text-gray-600 hover:bg-gray-50">About</a>
-            <a href="#services" class="block px-6 py-2 text-gray-600 hover:bg-gray-50">Services</a>
-            <a href="#contact" class="block px-6 py-2 text-gray-600 hover:bg-gray-50">Contact</a>
+            <a href="#home" class="block px-6 py-2 text-gray-600 hover:bg-gray-50" data-i18n="nav.home">Accueil</a>
+            <a href="#services" class="block px-6 py-2 text-gray-600 hover:bg-gray-50" data-i18n="nav.values">Valeurs</a>
+            <a href="#realisations" class="block px-6 py-2 text-gray-600 hover:bg-gray-50" data-i18n="nav.services">Nos Services</a>
+            <a href="#logiciels" class="block px-6 py-2 text-gray-600 hover:bg-gray-50" data-i18n="nav.software">Logiciels</a>
+            <a href="#contact" class="block px-6 py-2 text-gray-600 hover:bg-gray-50" data-i18n="nav.contact">Contact</a>
         </div>
     </nav>
 
@@ -230,16 +245,24 @@
             <div class="carousel-bg h-full">
                 <div class="carousel-inner-bg h-full">
                     <div class="carousel-item-bg active">
-                        <img src="assets\final-topo-buil-design\final-topo-buil-design\ACC\9.JPG" alt="Background 1" class="object-cover w-full h-full">
+                        <img src="assets\final-topo-buil-design\final-topo-buil-design\ACC\9.JPG" alt="Background 1"
+                            class="object-cover w-full h-full">
                     </div>
                     <div class="carousel-item-bg">
-                        <img src="assets\final-topo-buil-design\final-topo-buil-design\ACC\DERNIER-CHOIX.JPG" alt="Background 2" class="object-cover w-full h-full">
+                        <img src="assets\final-topo-buil-design\final-topo-buil-design\ACC\DERNIER-CHOIX.JPG"
+                            alt="Background 2" class="object-cover w-full h-full">
                     </div>
                     <div class="carousel-item-bg">
-                        <img src="assets\final-topo-buil-design\final-topo-buil-design\ACC\faharoa.JPG" alt="Background 3" class="object-cover w-full h-full">
+                        <img src="assets\final-topo-buil-design\final-topo-buil-design\ACC\faharoa.JPG"
+                            alt="Background 3" class="object-cover w-full h-full">
                     </div>
                     <div class="carousel-item-bg">
-                        <img src="assets\final-topo-buil-design\final-topo-buil-design\ACC\voaloany.JPG" alt="Background 4" class="object-cover w-full h-full">
+                        <img src="assets\final-topo-buil-design\final-topo-buil-design\ACC\voaloany.JPG"
+                            alt="Background 4" class="object-cover w-full h-full">
+                    </div>
+                    <div class="carousel-item-bg">
+                        <img src="assets\final-topo-buil-design\final-topo-buil-design\ACC\WhatsApp Image 2025-06-09 at 14.32.20.jpeg"
+                            alt="Background 4" class="object-cover w-full h-full">
                     </div>
                 </div>
             </div>
@@ -248,17 +271,14 @@
 
         <!-- Contenu centré -->
         <div class="relative z-10 w-full max-w-4xl px-4 text-center text-white">
-            <div class="mb-8">
-                <img src="assets/img/logo-topobuild-resize-removebg-preview.png" alt="TopoBuild Logo" class="h-24 mx-auto">
-            </div>
             <h1 class="text-3xl md:text-4xl lg:text-6xl font-extrabold mb-4">
                 <span class="block">Votre partenaire de confiance à Madagascar</span>
                 <span class="block">dans la modélisation 2D/3D et le traitement</span>
                 <span class="block">de données architecturales</span>
             </h1>
             <p class="mt-6 text-base md:text-lg max-w-3xl mx-auto">
-                Grâce à une équipe experimentée, dynamique et formée aux dernières technologies numériques, 
-                TopoBuild Design vous accompagne dans la réalisation précise et efficace de vos projets techniques, 
+                Grâce à une équipe experimentée, dynamique et formée aux dernières technologies numériques,
+                TopoBuild Design vous accompagne dans la réalisation précise et efficace de vos projets techniques,
                 de l'étude à la production, tout en garantissant des délais optimisés et coûts maîtrisés.
             </p>
         </div>
@@ -266,7 +286,7 @@
         <!-- Indicateur de scroll -->
         <div class="absolute bottom-4 left-1/2 -translate-x-1/2 animate-bounce">
             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
         </div>
     </header>
@@ -275,7 +295,8 @@
             <div class="max-w-7xl mx-auto px-4 py-16">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl font-bold text-gray-800 mb-4" data-i18n="services.title">VALEURS</h2>
-                    <p class="text-gray-600 max-w-2xl mx-auto" data-i18n="services.description">Découvrez les valeurs qui guident notre approche et garantissent votre satisfaction.</p>
+                    <p class="text-gray-600 max-w-2xl mx-auto" data-i18n="services.description">Découvrez les valeurs
+                        qui guident notre approche et garantissent votre satisfaction.</p>
                 </div>
                 <div class="relative">
                     <!-- Ligne verticale -->
@@ -286,11 +307,14 @@
                         <div class="flex items-center justify-between">
                             <div class="w-5/12 pr-8 text-right opacity-0 reveal-right">
                                 <h3 class="text-xl font-bold text-gray-800">✔️ Responsabilité</h3>
-                                <p class="text-gray-600 mt-2">Chaque projet confié est un engagement : rigueur, respect des délais, confidentialité.</p>
+                                <p class="text-gray-600 mt-2">Chaque projet confié est un engagement : rigueur, respect
+                                    des délais, confidentialité.</p>
                             </div>
-                            <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                            <div
+                                class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-primary flex items-center justify-center">
                                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
                                 </svg>
                             </div>
                             <div class="w-5/12 pl-8"></div>
@@ -299,14 +323,17 @@
                         <!-- Item 2 -->
                         <div class="flex items-center justify-between">
                             <div class="w-5/12 pr-8"></div>
-                            <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                            <div
+                                class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-primary flex items-center justify-center">
                                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                                 </svg>
                             </div>
                             <div class="w-5/12 pl-8 opacity-0 reveal-left">
                                 <h3 class="text-xl font-bold text-gray-800">🌟 Excellence</h3>
-                                <p class="text-gray-600 mt-2">Des livrables soignés, pensés pour dépasser vos attentes. Notre exigence est notre marque.</p>
+                                <p class="text-gray-600 mt-2">Des livrables soignés, pensés pour dépasser vos attentes.
+                                    Notre exigence est notre marque.</p>
                             </div>
                         </div>
 
@@ -314,12 +341,16 @@
                         <div class="flex items-center justify-between">
                             <div class="w-5/12 pr-8 text-right opacity-0 reveal-right">
                                 <h3 class="text-xl font-bold text-gray-800">🛠️ Flexibilité</h3>
-                                <p class="text-gray-600 mt-2">Formats personnalisés, délais courts, contraintes particulières : nous nous adaptons à votre réalité.</p>
+                                <p class="text-gray-600 mt-2">Formats personnalisés, délais courts, contraintes
+                                    particulières : nous nous adaptons à votre réalité.</p>
                             </div>
-                            <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                            <div
+                                class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-primary flex items-center justify-center">
                                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
                             </div>
                             <div class="w-5/12 pl-8"></div>
@@ -328,14 +359,17 @@
                         <!-- Item 4 -->
                         <div class="flex items-center justify-between">
                             <div class="w-5/12 pr-8"></div>
-                            <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                            <div
+                                class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-primary flex items-center justify-center">
                                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
                                 </svg>
                             </div>
                             <div class="w-5/12 pl-8 opacity-0 reveal-left">
                                 <h3 class="text-xl font-bold text-gray-800">💡 Esprit collaboratif</h3>
-                                <p class="text-gray-600 mt-2">Une communication claire, réactive et transparente, du premier contact à la livraison finale.</p>
+                                <p class="text-gray-600 mt-2">Une communication claire, réactive et transparente, du
+                                    premier contact à la livraison finale.</p>
                             </div>
                         </div>
 
@@ -343,11 +377,14 @@
                         <div class="flex items-center justify-between">
                             <div class="w-5/12 pr-8 text-right opacity-0 reveal-right">
                                 <h3 class="text-xl font-bold text-gray-800">📊 Qualité & Accessibilité</h3>
-                                <p class="text-gray-600 mt-2">Un rapport qualité/prix équilibré sans compromis sur la précision ni la performance.</p>
+                                <p class="text-gray-600 mt-2">Un rapport qualité/prix équilibré sans compromis sur la
+                                    précision ni la performance.</p>
                             </div>
-                            <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                            <div
+                                class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-primary flex items-center justify-center">
                                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                                 </svg>
                             </div>
                             <div class="w-5/12 pl-8"></div>
@@ -361,27 +398,75 @@
         <section id="realisations" class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold text-gray-800 mb-4">NOS SERVICES</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Des solutions techniques sur mesure pour des projets concrets</p>
+                <p class="text-gray-600 max-w-2xl mx-auto">Des solutions techniques sur mesure pour des projets concrets
+                </p>
             </div>
 
             <!-- Service Details Section -->
-            <div class="space-y-16">
-                <!-- Service 1 -->
+            <div class="space-y-16">                <!-- Service 1 -->
                 <div class="flex flex-col lg:flex-row gap-8">
-                    <div class="lg:w-1/2">
+                    <div class="lg:w-1/2 order-2 lg:order-1">
                         <div class="carousel h-[500px] rounded-xl overflow-hidden relative">
                             <div class="carousel-inner h-full">
                                 <div class="carousel-item active">
-                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-PLANS TOPOGRAPHIQUES 2D  3D/mnt.PNG" 
-                                         alt="Plan topographique 1" class="w-full h-full object-cover">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-PLANS TOPOGRAPHIQUES 2D  3D/mnt.PNG"
+                                        alt="Plan topographique - MNT" class="w-full h-full object-cover">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-PLANS TOPOGRAPHIQUES 2D  3D/er.PNG" 
-                                         alt="Plan topographique 2" class="w-full h-full object-cover">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-PLANS TOPOGRAPHIQUES 2D  3D/er.PNG"
+                                        alt="Plan topographique" class="w-full h-full object-cover">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-PLANS TOPOGRAPHIQUES 2D  3D/ert.PNG" 
-                                         alt="Plan topographique 3" class="w-full h-full object-cover">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-PLANS TOPOGRAPHIQUES 2D  3D/ert.PNG"
+                                        alt="Plan topographique" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-PLANS TOPOGRAPHIQUES 2D  3D/bnn.PNG"
+                                        alt="Plan topographique" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-PLANS TOPOGRAPHIQUES 2D  3D/CCCCC.PNG"
+                                        alt="Plan topographique" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-PLANS TOPOGRAPHIQUES 2D  3D/7888.JPG"
+                                        alt="Plan topographique" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-PLANS TOPOGRAPHIQUES 2D  3D/9000.JPG"
+                                        alt="Plan topographique" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-PLANS TOPOGRAPHIQUES 2D  3D/ddd.JPG"
+                                        alt="Plan topographique" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-PLANS TOPOGRAPHIQUES 2D  3D/fvbnhg.JPG"
+                                        alt="Plan topographique" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-PLANS TOPOGRAPHIQUES 2D  3D/rec.PNG"
+                                        alt="Plan topographique" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-PLANS TOPOGRAPHIQUES 2D  3D/rtt.PNG"
+                                        alt="Plan topographique" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-PLANS TOPOGRAPHIQUES 2D  3D/TOPO.png"
+                                        alt="Plan topographique" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-PLANS TOPOGRAPHIQUES 2D  3D/tp.PNG"
+                                        alt="Plan topographique" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-PLANS TOPOGRAPHIQUES 2D  3D/tyt.PNG"
+                                        alt="Plan topographique" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-PLANS TOPOGRAPHIQUES 2D  3D/WhatsApp Image 2025-06-10 at 20.48.22.jpeg"
+                                        alt="Plan topographique" class="w-full h-full object-cover">
                                 </div>
                             </div>
                             <button class="carousel-control carousel-prev">&lt;</button>
@@ -390,16 +475,28 @@
                                 <span class="carousel-indicator active"></span>
                                 <span class="carousel-indicator"></span>
                                 <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
                             </div>
                         </div>
-                    </div>
-                    <div class="lg:w-1/2 bg-white rounded-xl shadow-lg p-8">
+                    </div>                    <div class="lg:w-1/2 bg-white rounded-xl shadow-lg p-8 order-1 lg:order-2">
                         <div class="mb-8">
                             <div class="flex justify-between items-center mb-4">
                                 <h3 class="text-2xl font-bold text-gray-800">PLANS TOPOGRAPHIQUES 2D / 3D</h3>
                                 <span class="text-xl font-bold text-primary">01</span>
                             </div>
-                            <p class="text-gray-600 mb-6">Des relevés bruts transformés en plans fiables, précis et normés</p>
+                            <p class="text-gray-600 mb-6">Des relevés bruts transformés en plans fiables, précis et
+                                normés</p>
                             <div class="space-y-6">
                                 <div>
                                     <h4 class="font-semibold text-gray-800 mb-2">🔧 Nos prestations :</h4>
@@ -427,24 +524,66 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Service 2 -->
+                </div>                <!-- Service 2 -->
                 <div class="flex flex-col lg:flex-row-reverse gap-8">
-                    <div class="lg:w-1/2">
+                    <div class="lg:w-1/2 order-2 lg:order-1">
                         <div class="carousel h-[500px] rounded-xl overflow-hidden relative">
                             <div class="carousel-inner h-full">
                                 <div class="carousel-item active">
-                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-. PLANS TECHNIQUES D’ARCHITECTURE/st1.JPG" 
-                                         alt="Plan technique 1" class="w-full h-full object-cover">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-. PLANS TECHNIQUES D’ARCHITECTURE/st1.JPG"
+                                        alt="Plan technique 1" class="w-full h-full object-cover">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-. PLANS TECHNIQUES D’ARCHITECTURE/st2.JPG" 
-                                         alt="Plan technique 2" class="w-full h-full object-cover">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-. PLANS TECHNIQUES D’ARCHITECTURE/st2.JPG"
+                                        alt="Plan technique 2" class="w-full h-full object-cover">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-. PLANS TECHNIQUES D’ARCHITECTURE/st3.PNG" 
-                                         alt="Plan technique 3" class="w-full h-full object-cover">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-. PLANS TECHNIQUES D’ARCHITECTURE/st3.PNG"
+                                        alt="Plan technique 3" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-. PLANS TECHNIQUES D’ARCHITECTURE/st4.PNG"
+                                        alt="Plan technique 4" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-. PLANS TECHNIQUES D’ARCHITECTURE/st5.PNG"
+                                        alt="Plan technique 5" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-. PLANS TECHNIQUES D’ARCHITECTURE/st6.PNG"
+                                        alt="Plan technique 6" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-. PLANS TECHNIQUES D’ARCHITECTURE/st7.PNG"
+                                        alt="Plan technique 7" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-. PLANS TECHNIQUES D’ARCHITECTURE/st8.PNG"
+                                        alt="Plan technique 8" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-. PLANS TECHNIQUES D’ARCHITECTURE/st9.PNG"
+                                        alt="Plan technique 9" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-. PLANS TECHNIQUES D’ARCHITECTURE/st10.PNG"
+                                        alt="Plan technique 10" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-. PLANS TECHNIQUES D’ARCHITECTURE/st11.PNG"
+                                        alt="Plan technique 11" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-. PLANS TECHNIQUES D’ARCHITECTURE/st12.PNG"
+                                        alt="Plan technique 12" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-. PLANS TECHNIQUES D’ARCHITECTURE/st13.PNG"
+                                        alt="Plan technique 13" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6-. PLANS TECHNIQUES D’ARCHITECTURE/st14.PNG"
+                                        alt="Plan technique 14" class="w-full h-full object-cover">
                                 </div>
                             </div>
                             <button class="carousel-control carousel-prev">&lt;</button>
@@ -453,16 +592,27 @@
                                 <span class="carousel-indicator active"></span>
                                 <span class="carousel-indicator"></span>
                                 <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
                             </div>
-                        </div>
-                    </div>
-                    <div class="lg:w-1/2 bg-white rounded-xl shadow-lg p-8">
+                        </div>                    </div>
+                    <div class="lg:w-1/2 bg-white rounded-xl shadow-lg p-8 order-1 lg:order-2">
                         <div class="mb-8">
                             <div class="flex justify-between items-center mb-4">
                                 <h3 class="text-2xl font-bold text-gray-800">🏛️ PLANS TECHNIQUES D'ARCHITECTURE</h3>
                                 <span class="text-xl font-bold text-primary">02</span>
                             </div>
-                            <p class="text-gray-600 mb-6">Des documents clairs, conformes et directement exploitables</p>
+                            <p class="text-gray-600 mb-6">Des documents clairs, conformes et directement exploitables
+                            </p>
                             <div class="space-y-6">
                                 <div>
                                     <h4 class="font-semibold text-gray-800 mb-2">📐 Prestations incluses :</h4>
@@ -476,18 +626,18 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Service 3 -->
+                </div>                <!-- Service 3 -->
                 <div class="flex flex-col lg:flex-row gap-8">
-                    <div class="lg:w-1/2">
+                    <div class="lg:w-1/2 order-2 lg:order-1">
                         <div class="carousel h-[500px] rounded-xl overflow-hidden relative">
                             <div class="carousel-inner h-full">
                                 <div class="carousel-item active">
-                                    <img src="assets/img/services/sig-1.jpg" alt="SIG 1" class="w-full h-full object-cover">
+                                    <img src="assets/img/services/sig-1.jpg" alt="SIG 1"
+                                        class="w-full h-full object-cover">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="assets/img/services/sig-2.jpg" alt="SIG 2" class="w-full h-full object-cover">
+                                    <img src="assets/img/services/sig-2.jpg" alt="SIG 2"
+                                        class="w-full h-full object-cover">
                                 </div>
                             </div>
                             <button class="carousel-control carousel-prev">&lt;</button>
@@ -496,9 +646,8 @@
                                 <span class="carousel-indicator active"></span>
                                 <span class="carousel-indicator"></span>
                             </div>
-                        </div>
-                    </div>
-                    <div class="lg:w-1/2 bg-white rounded-xl shadow-lg p-8">
+                        </div>                    </div>
+                    <div class="lg:w-1/2 bg-white rounded-xl shadow-lg p-8 order-1 lg:order-2">
                         <div class="mb-8">
                             <div class="flex justify-between items-center mb-4">
                                 <h3 class="text-2xl font-bold text-gray-800">🧭 VECTORISATION & STRUCTURATION SIG</h3>
@@ -506,7 +655,9 @@
                             </div>
                             <p class="text-gray-600 mb-6">Transformez vos données en cartographie intelligente</p>
                             <div class="space-y-6">
-                                <p class="text-gray-600">Nous convertissons vos supports existants (PDF, plans papier, images scannées...) en fichiers vectoriels structurés et géoréférencés, compatibles avec vos SIG.</p>
+                                <p class="text-gray-600">Nous convertissons vos supports existants (PDF, plans papier,
+                                    images scannées...) en fichiers vectoriels structurés et géoréférencés, compatibles
+                                    avec vos SIG.</p>
                                 <div>
                                     <h4 class="font-semibold text-gray-800 mb-2">🗂️ Prestations :</h4>
                                     <ul class="list-disc pl-5 space-y-1 text-gray-600">
@@ -518,21 +669,61 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Service 4 -->
-                <div class="flex flex-col lg:flex-row-reverse gap-8">
-                    <div class="lg:w-1/2">
+                </div>                <!-- Service 4 -->                <div class="flex flex-col lg:flex-row gap-8">
+                    <div class="lg:w-1/2 order-2 lg:order-1">
                         <div class="carousel h-[500px] rounded-xl overflow-hidden relative">
                             <div class="carousel-inner h-full">
                                 <div class="carousel-item active">
-                                    <img src="assets\final-topo-buil-design\final-topo-buil-design\w6- MAQUETTES NUMÉRIQUES & MODÉLISATION 3D\1.PNG" alt="3D 1" class="w-full h-full object-cover">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- MAQUETTES NUMÉRIQUES & MODÉLISATION 3D/1.PNG"
+                                        alt="Maquette 3D - Vue 1" class="w-full h-full object-cover">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="assets\final-topo-buil-design\final-topo-buil-design\w6- MAQUETTES NUMÉRIQUES & MODÉLISATION 3D\2.PNG" alt="3D 2" class="w-full h-full object-cover">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- MAQUETTES NUMÉRIQUES & MODÉLISATION 3D/2.PNG"
+                                        alt="Maquette 3D - Vue 2" class="w-full h-full object-cover">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="assets\final-topo-buil-design\final-topo-buil-design\w6- MAQUETTES NUMÉRIQUES & MODÉLISATION 3D\3.PNG" alt="3D 2" class="w-full h-full object-cover">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- MAQUETTES NUMÉRIQUES & MODÉLISATION 3D/3.PNG"
+                                        alt="Maquette 3D - Vue 3" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- MAQUETTES NUMÉRIQUES & MODÉLISATION 3D/4.PNG"
+                                        alt="Maquette 3D - Vue 4" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- MAQUETTES NUMÉRIQUES & MODÉLISATION 3D/5.PNG"
+                                        alt="Maquette 3D - Vue 5" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- MAQUETTES NUMÉRIQUES & MODÉLISATION 3D/6.PNG"
+                                        alt="Maquette 3D - Vue 6" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- MAQUETTES NUMÉRIQUES & MODÉLISATION 3D/7.PNG"
+                                        alt="Maquette 3D - Vue 7" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- MAQUETTES NUMÉRIQUES & MODÉLISATION 3D/8.png"
+                                        alt="Maquette 3D - Vue 8" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- MAQUETTES NUMÉRIQUES & MODÉLISATION 3D/9.jpeg"
+                                        alt="Maquette 3D - Vue 9" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- MAQUETTES NUMÉRIQUES & MODÉLISATION 3D/10.jpeg"
+                                        alt="Maquette 3D - Vue 10" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- MAQUETTES NUMÉRIQUES & MODÉLISATION 3D/11.jpeg"
+                                        alt="Maquette 3D - Vue 11" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- MAQUETTES NUMÉRIQUES & MODÉLISATION 3D/12.jpeg"
+                                        alt="Maquette 3D - Vue 12" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- MAQUETTES NUMÉRIQUES & MODÉLISATION 3D/13.jpeg"
+                                        alt="Maquette 3D - Vue 13" class="w-full h-full object-cover">
                                 </div>
                             </div>
                             <button class="carousel-control carousel-prev">&lt;</button>
@@ -540,18 +731,32 @@
                             <div class="carousel-indicators">
                                 <span class="carousel-indicator active"></span>
                                 <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
                             </div>
                         </div>
                     </div>
                     <div class="lg:w-1/2 bg-white rounded-xl shadow-lg p-8">
                         <div class="mb-8">
                             <div class="flex justify-between items-center mb-4">
-                                <h3 class="text-2xl font-bold text-gray-800">🏗️ MAQUETTES NUMÉRIQUES & MODÉLISATION 3D</h3>
+                                <h3 class="text-2xl font-bold text-gray-800">🏗️ MAQUETTES NUMÉRIQUES & MODÉLISATION 3D
+                                </h3>
                                 <span class="text-xl font-bold text-primary">04</span>
                             </div>
                             <p class="text-gray-600 mb-6">Du relevé terrain au modèle 3D interactif</p>
                             <div class="space-y-6">
-                                <p class="text-gray-600">Nous modélisons vos projets en 3D à partir de vos relevés, plans ou croquis, pour des usages allant de la visualisation simple au BIM avancé.</p>
+                                <p class="text-gray-600">Nous modélisons vos projets en 3D à partir de vos relevés,
+                                    plans ou croquis, pour des usages allant de la visualisation simple au BIM avancé.
+                                </p>
                                 <div>
                                     <h4 class="font-semibold text-gray-800 mb-2">🔧 Outils & livrables :</h4>
                                     <ul class="list-disc pl-5 space-y-1 text-gray-600">
@@ -564,18 +769,37 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Service 5 -->
+                </div>                <!-- Service 5 -->
                 <div class="flex flex-col lg:flex-row gap-8">
-                    <div class="lg:w-1/2">
-                        <div class="carousel h-[500px] rounded-xl overflow-hidden relative">
-                            <div class="carousel-inner h-full">
+                    <div class="lg:w-1/2 order-2 lg:order-1">
+                        <div class="carousel h-[500px] rounded-xl overflow-hidden relative">                            <div class="carousel-inner h-full">
                                 <div class="carousel-item active">
-                                    <img src="assets\final-topo-buil-design\final-topo-buil-design\w6- 5. RENDUS & VISUALISATIONS IMMERSIVES\WhatsApp Image 2025-06-05 at 18.06.35.jpeg" alt="Rendu 1" class="w-full h-full object-cover">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- 5. RENDUS & VISUALISATIONS IMMERSIVES/ChatGPT Image 9 juin 2025, 10_23_22.png"
+                                        alt="Rendu 1" class="w-full h-full object-cover">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="assets\final-topo-buil-design\final-topo-buil-design\w6- 5. RENDUS & VISUALISATIONS IMMERSIVES\WhatsApp Image 2025-06-05 at 18.06.36.jpeg" alt="Rendu 2" class="w-full h-full object-cover">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- 5. RENDUS & VISUALISATIONS IMMERSIVES/faharoa.JPG"
+                                        alt="Rendu 2" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- 5. RENDUS & VISUALISATIONS IMMERSIVES/WhatsApp Image 2025-06-05 at 18.06.35.jpeg"
+                                        alt="Rendu 3" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- 5. RENDUS & VISUALISATIONS IMMERSIVES/WhatsApp Image 2025-06-05 at 18.06.36.jpeg"
+                                        alt="Rendu 4" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- 5. RENDUS & VISUALISATIONS IMMERSIVES/WhatsApp Image 2025-06-08 at 13.55.37.jpeg"
+                                        alt="Rendu 5" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- 5. RENDUS & VISUALISATIONS IMMERSIVES/WhatsApp Image 2025-06-08 at 13.55.39.jpeg"
+                                        alt="Rendu 6" class="w-full h-full object-cover">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/final-topo-buil-design/final-topo-buil-design/w6- 5. RENDUS & VISUALISATIONS IMMERSIVES/WhatsApp Image 2025-06-08 at 13.55.40.jpeg"
+                                        alt="Rendu 7" class="w-full h-full object-cover">
                                 </div>
                             </div>
                             <button class="carousel-control carousel-prev">&lt;</button>
@@ -583,10 +807,14 @@
                             <div class="carousel-indicators">
                                 <span class="carousel-indicator active"></span>
                                 <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
+                                <span class="carousel-indicator"></span>
                             </div>
-                        </div>
-                    </div>
-                    <div class="lg:w-1/2 bg-white rounded-xl shadow-lg p-8">
+                        </div>                    </div>
+                    <div class="lg:w-1/2 bg-white rounded-xl shadow-lg p-8 order-1 lg:order-2">
                         <div class="mb-8">
                             <div class="flex justify-between items-center mb-4">
                                 <h3 class="text-2xl font-bold text-gray-800">🎥 RENDUS & VISUALISATIONS IMMERSIVES</h3>
@@ -594,7 +822,9 @@
                             </div>
                             <p class="text-gray-600 mb-6">Présenter. Séduire. Convaincre.</p>
                             <div class="space-y-6">
-                                <p class="text-gray-600">Nos rendus photoréalistes, vidéos et visites virtuelles valorisent vos projets pour vos appels d'offre, présentations ou permis de construire.</p>
+                                <p class="text-gray-600">Nos rendus photoréalistes, vidéos et visites virtuelles
+                                    valorisent vos projets pour vos appels d'offre, présentations ou permis de
+                                    construire.</p>
                                 <div>
                                     <h4 class="font-semibold text-gray-800 mb-2">📸 Livrables :</h4>
                                     <ul class="list-disc pl-5 space-y-1 text-gray-600">
@@ -608,59 +838,119 @@
                     </div>
                 </div>
 
-                <!-- Service 6 -->
-                <div class="flex flex-col lg:flex-row-reverse gap-8">
-                    <div class="lg:w-1/2">
-                        <div class="carousel h-[500px] rounded-xl overflow-hidden relative">
-                            <div class="carousel-inner h-full">
-                                <div class="carousel-item active">
-                                    <img src="assets/img/services/dao-1.jpg" alt="DAO 1" class="w-full h-full object-cover">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="assets/img/services/dao-2.jpg" alt="DAO 2" class="w-full h-full object-cover">
-                                </div>
-                            </div>
-                            <button class="carousel-control carousel-prev">&lt;</button>
-                            <button class="carousel-control carousel-next">&gt;</button>
-                            <div class="carousel-indicators">
-                                <span class="carousel-indicator active"></span>
-                                <span class="carousel-indicator"></span>
-                            </div>
-                        </div>
+
+            </div>
+            <!-- Logos des logiciels -->            <div id="logiciels" class="mt-24">
+                <h3 class="text-2xl font-bold text-gray-800 text-center mb-12">Nos outils de traitement</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                    <!-- Allplan -->
+                    <div class="flex flex-col items-center justify-center group">
+                        <img src="assets/final-topo-buil-design/final-topo-buil-design/LOGICIEL-DE-TRAITEMENT/all-plan.JPG" alt="Allplan" 
+                             class="h-16 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 object-contain">
+                        <span class="mt-2 text-sm text-gray-600">Allplan</span>
                     </div>
-                    <div class="lg:w-1/2 bg-white rounded-xl shadow-lg p-8">
-                        <div class="mb-8">
-                            <div class="flex justify-between items-center mb-4">
-                                <h3 class="text-2xl font-bold text-gray-800">🤝 EXTERNALISATION DAO & ACCOMPAGNEMENT</h3>
-                                <span class="text-xl font-bold text-primary">06</span>
-                            </div>
-                            <p class="text-gray-600 mb-6">Votre production entre de bonnes mains</p>
-                            <div class="space-y-6">
-                                <p class="text-gray-600">Besoin de renfort en DAO ? Nous assurons une production externalisée de qualité, en toute confidentialité, avec une grande réactivité.</p>
-                                <div>
-                                    <h4 class="font-semibold text-gray-800 mb-2">🔧 Nos engagements :</h4>
-                                    <ul class="list-disc pl-5 space-y-1 text-gray-600">
-                                        <li>Suivi projet dédié</li>
-                                        <li>Délai express garanti</li>
-                                        <li>Formats adaptés à votre charte DAO</li>
-                                        <li>Paiement flexible (virement ou CB)</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                    <!-- ArcGIS -->
+                    <div class="flex flex-col items-center justify-center group">
+                        <img src="assets/final-topo-buil-design/final-topo-buil-design/LOGICIEL-DE-TRAITEMENT/arcgis.JPG" alt="ArcGIS" 
+                             class="h-16 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 object-contain">
+                        <span class="mt-2 text-sm text-gray-600">ArcGIS</span>
+                    </div>
+                    <!-- ArchiCAD -->
+                    <div class="flex flex-col items-center justify-center group">
+                        <img src="assets/final-topo-buil-design/final-topo-buil-design/LOGICIEL-DE-TRAITEMENT/archicad.JPG" alt="ArchiCAD" 
+                             class="h-16 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 object-contain">
+                        <span class="mt-2 text-sm text-gray-600">ArchiCAD</span>
+                    </div>
+                    <!-- As-Built -->
+                    <div class="flex flex-col items-center justify-center group">
+                        <img src="assets/final-topo-buil-design/final-topo-buil-design/LOGICIEL-DE-TRAITEMENT/asbuild.JPG" alt="As-Built" 
+                             class="h-16 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 object-contain">
+                        <span class="mt-2 text-sm text-gray-600">As-Built</span>
+                    </div>
+                    <!-- AutoCAD -->
+                    <div class="flex flex-col items-center justify-center group">
+                        <img src="assets/final-topo-buil-design/final-topo-buil-design/LOGICIEL-DE-TRAITEMENT/auto.JPG" alt="AutoCAD" 
+                             class="h-16 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 object-contain">
+                        <span class="mt-2 text-sm text-gray-600">AutoCAD</span>
+                    </div>
+                    <!-- Blender -->
+                    <div class="flex flex-col items-center justify-center group">
+                        <img src="assets/final-topo-buil-design/final-topo-buil-design/LOGICIEL-DE-TRAITEMENT/blinder.JPG" alt="Blender" 
+                             class="h-16 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 object-contain">
+                        <span class="mt-2 text-sm text-gray-600">Blender</span>
+                    </div>
+                    <!-- Covadis -->
+                    <div class="flex flex-col items-center justify-center group">
+                        <img src="assets/final-topo-buil-design/final-topo-buil-design/LOGICIEL-DE-TRAITEMENT/covadis.JPG" alt="Covadis" 
+                             class="h-16 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 object-contain">
+                        <span class="mt-2 text-sm text-gray-600">Covadis</span>
+                    </div>
+                    <!-- JetStream -->
+                    <div class="flex flex-col items-center justify-center group">
+                        <img src="assets/final-topo-buil-design/final-topo-buil-design/LOGICIEL-DE-TRAITEMENT/jets.JPG" alt="JetStream" 
+                             class="h-16 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 object-contain">
+                        <span class="mt-2 text-sm text-gray-600">JetStream</span>
+                    </div>
+                    <!-- Lumion -->
+                    <div class="flex flex-col items-center justify-center group">
+                        <img src="assets/final-topo-buil-design/final-topo-buil-design/LOGICIEL-DE-TRAITEMENT/lumion.JPG" alt="Lumion" 
+                             class="h-16 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 object-contain">
+                        <span class="mt-2 text-sm text-gray-600">Lumion</span>
+                    </div>
+                    <!-- MicroStation -->
+                    <div class="flex flex-col items-center justify-center group">
+                        <img src="assets/final-topo-buil-design/final-topo-buil-design/LOGICIEL-DE-TRAITEMENT/microsta.JPG" alt="MicroStation" 
+                             class="h-16 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 object-contain">
+                        <span class="mt-2 text-sm text-gray-600">MicroStation</span>
+                    </div>
+                    <!-- ReCap -->
+                    <div class="flex flex-col items-center justify-center group">
+                        <img src="assets/final-topo-buil-design/final-topo-buil-design/LOGICIEL-DE-TRAITEMENT/recap.JPG" alt="ReCap" 
+                             class="h-16 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 object-contain">
+                        <span class="mt-2 text-sm text-gray-600">ReCap</span>
+                    </div>
+                    <!-- Revit -->
+                    <div class="flex flex-col items-center justify-center group">
+                        <img src="assets/final-topo-buil-design/final-topo-buil-design/LOGICIEL-DE-TRAITEMENT/revit.JPG" alt="Revit" 
+                             class="h-16 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 object-contain">
+                        <span class="mt-2 text-sm text-gray-600">Revit</span>
+                    </div>
+                    <!-- SketchUp -->
+                    <div class="flex flex-col items-center justify-center group">
+                        <img src="assets/final-topo-buil-design/final-topo-buil-design/LOGICIEL-DE-TRAITEMENT/skech.JPG" alt="SketchUp" 
+                             class="h-16 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 object-contain">
+                        <span class="mt-2 text-sm text-gray-600">SketchUp</span>
+                    </div>
+                    <!-- SolidWorks -->
+                    <div class="flex flex-col items-center justify-center group">
+                        <img src="assets/final-topo-buil-design/final-topo-buil-design/LOGICIEL-DE-TRAITEMENT/solide w.JPG" alt="SolidWorks" 
+                             class="h-16 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 object-contain">
+                        <span class="mt-2 text-sm text-gray-600">SolidWorks</span>
+                    </div>
+                    <!-- TopoDOT -->
+                    <div class="flex flex-col items-center justify-center group">
+                        <img src="assets/final-topo-buil-design/final-topo-buil-design/LOGICIEL-DE-TRAITEMENT/topodote.JPG" alt="TopoDOT" 
+                             class="h-16 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 object-contain">
+                        <span class="mt-2 text-sm text-gray-600">TopoDOT</span>
+                    </div>
+                    <!-- TruView -->
+                    <div class="flex flex-col items-center justify-center group">
+                        <img src="assets/final-topo-buil-design/final-topo-buil-design/LOGICIEL-DE-TRAITEMENT/tru.JPG" alt="TruView" 
+                             class="h-16 w-auto grayscale group-hover:grayscale-0 transition-all duration-300 object-contain">
+                        <span class="mt-2 text-sm text-gray-600">TruView</span>
                     </div>
                 </div>
-
             </div>
         </section>
 
         <!-- JavaScript pour le carousel -->
         <script>
-            function initCarousels() {
-                const transitionEffects = [
-                    { duration: 0.5, timing: 'ease-in-out', interval: 4000 },  // Premier carousel
-                    { duration: 0.7, timing: 'ease', interval: 5000 },         // Deuxième carousel
-                    { duration: 0.3, timing: 'ease-out', interval: 6000 }      // Troisième carousel
+            function initCarousels() {                const transitionEffects = [
+                    { duration: 0.5, timing: 'ease-in-out', interval: 4000 },     // Premier carousel
+                    { duration: 0.7, timing: 'ease', interval: 5000 },            // Deuxième carousel
+                    { duration: 0.3, timing: 'ease-out', interval: 6000 },        // Troisième carousel
+                    { duration: 0.8, timing: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)', interval: 4500 },  // Effet bounce
+                    { duration: 0.6, timing: 'cubic-bezier(0.645, 0.045, 0.355, 1)', interval: 5500 }     // Effet smooth
                 ];
 
                 document.querySelectorAll('.carousel').forEach((carousel, index) => {
@@ -792,52 +1082,68 @@
             <div class="max-w-7xl mx-auto px-4 py-16">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl font-bold text-gray-800 mb-4" data-i18n="contact.title">Contactez-nous</h2>
-                    <p class="text-gray-600 max-w-2xl mx-auto" data-i18n="contact.subtitle">Prenez contact avec nous pour discuter de vos projets</p>
+                    <p class="text-gray-600 max-w-2xl mx-auto" data-i18n="contact.subtitle">Prenez contact avec nous
+                        pour discuter de vos projets</p>
                 </div>
 
-                 <!-- Carte -->
+                <!-- Carte -->
                 <div class="mb-12 relative z-0">
                     <div id="map" class="h-96 w-full rounded-xl shadow-lg"></div>
                 </div>
-                
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <!-- Informations de contact -->
                     <div class="bg-white rounded-xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-6" data-i18n="contact.info.title">Nos coordonnées</h3>
-                        
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6" data-i18n="contact.info.title">Nos coordonnées
+                        </h3>
+
                         <div class="space-y-4">
                             <!-- Téléphone -->
                             <div class="flex items-center space-x-4">
-                                <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                <div
+                                    class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="text-gray-800 font-medium" data-i18n="contact.info.phone">Téléphone & WhatsApp</p>
-                                    <a href="tel:+261384859280" class="text-primary hover:underline">+261 38 48 59 280</a>
+                                    <p class="text-gray-800 font-medium" data-i18n="contact.info.phone">Téléphone &
+                                        WhatsApp</p>
+                                    <a href="tel:+261384859280" class="text-primary hover:underline">+261 38 48 59
+                                        280</a>
                                 </div>
                             </div>
 
                             <!-- Email -->
                             <div class="flex items-center space-x-4">
-                                <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                <div
+                                    class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
                                 </div>
                                 <div>
                                     <p class="text-gray-800 font-medium">Email</p>
-                                    <a href="mailto:Topoduilddesign@gmail.com" class="text-primary hover:underline">contact@topobuild-design.com | topobuildesign@gmail.com</a>
+                                    <a href="mailto:Topoduilddesign@gmail.com"
+                                        class="text-primary hover:underline">contact@topobuild-design.com |
+                                        topobuildesign@gmail.com</a>
                                 </div>
                             </div>
 
                             <!-- Adresse -->
                             <div class="flex items-center space-x-4">
-                                <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                <div
+                                    class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                     </svg>
                                 </div>
                                 <div>
@@ -848,9 +1154,12 @@
 
                             <!-- Informations légales -->
                             <div class="flex items-center space-x-4">
-                                <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                <div
+                                    class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                     </svg>
                                 </div>
                                 <div>
@@ -861,14 +1170,17 @@
                             </div>
 
                             <div class="flex items-center space-x-4">
-                                <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                <div
+                                    class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                                     <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                        <path
+                                            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                                     </svg>
                                 </div>
                                 <div>
                                     <p class="text-gray-800 font-medium">Page Facebook</p>
-                                    <a href="https://www.facebook.com/profile.php?id=61577514774162" target="_blank" class="text-primary hover:underline">Topo build design</a>
+                                    <a href="https://www.facebook.com/profile.php?id=61577514774162" target="_blank"
+                                        class="text-primary hover:underline">Topo build design</a>
                                 </div>
                             </div>
                         </div>
@@ -876,28 +1188,31 @@
 
                     <!-- Formulaire de contact -->
                     <div class="bg-white rounded-xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-6" data-i18n="contact.form.title">Envoyez-nous un message</h3>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6" data-i18n="contact.form.title">Envoyez-nous un
+                            message</h3>
                         <form class="space-y-8">
                             <div>
-                                <label for="name" class="block text-lg font-medium text-gray-700 mb-2" data-i18n="contact.form.name">Nom complet</label>
-                                <input type="text" id="name" name="name" 
+                                <label for="name" class="block text-lg font-medium text-gray-700 mb-2"
+                                    data-i18n="contact.form.name">Nom complet</label>
+                                <input type="text" id="name" name="name"
                                     class="mt-2 block w-full px-3 py-3 text-lg bg-gray-50 rounded-lg border-2 border-gray-300 
                                     shadow-sm focus:border-primary focus:ring-primary hover:border-gray-400 transition-colors">
                             </div>
                             <div>
-                                <label for="email" class="block text-lg font-medium text-gray-700 mb-2" data-i18n="contact.form.email">Email</label>
-                                <input type="email" id="email" name="email" 
+                                <label for="email" class="block text-lg font-medium text-gray-700 mb-2"
+                                    data-i18n="contact.form.email">Email</label>
+                                <input type="email" id="email" name="email"
                                     class="mt-2 block w-full px-3 py-3 text-lg bg-gray-50 rounded-lg border-2 border-gray-300 
                                     shadow-sm focus:border-primary focus:ring-primary hover:border-gray-400 transition-colors">
                             </div>
                             <div>
-                                <label for="message" class="block text-lg font-medium text-gray-700 mb-2" data-i18n="contact.form.message">Message</label>
-                                <textarea id="message" name="message" rows="6" 
+                                <label for="message" class="block text-lg font-medium text-gray-700 mb-2"
+                                    data-i18n="contact.form.message">Message</label>
+                                <textarea id="message" name="message" rows="6"
                                     class="mt-2 block w-full px-3 py-3 text-lg bg-gray-50 rounded-lg border-2 border-gray-300 
                                     shadow-sm focus:border-primary focus:ring-primary hover:border-gray-400 transition-colors"></textarea>
                             </div>
-                            <button type="submit" 
-                                class="w-full bg-primary text-white py-4 px-6 text-lg font-medium rounded-lg hover:bg-primary/90 
+                            <button type="submit" class="w-full bg-primary text-white py-4 px-6 text-lg font-medium rounded-lg hover:bg-primary/90 
                                 transition-colors shadow-lg hover:shadow-xl" data-i18n="contact.form.submit">
                                 Envoyer le message
                             </button>
@@ -976,7 +1291,7 @@
                 items.forEach(item => {
                     item.classList.remove('active');
                 });
-                
+
                 currentIndex = (currentIndex + 1) % items.length;
                 items[currentIndex].classList.add('active');
                 inner.style.transform = `translateX(-${currentIndex * 25}%)`; // 100% / nombre d'images
